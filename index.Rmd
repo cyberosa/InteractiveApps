@@ -1,0 +1,28 @@
+---
+title: "Interactive Web Apps"
+author: "A. Rosa Castillo"
+date: "28 October 2017"
+output: html_document
+---
+
+## Game: which is the capital of Australia?
+### 28 October 2017
+Try to find the capital by clicking in the suggested cities... Good luck!
+
+
+```{r load the library, echo=FALSE}
+library(leaflet)
+```
+
+
+```{r create the map, echo=FALSE}
+lat <-c(-33.865143,-16.925491,-31.953512,-34.206841,-35.28204)
+lng <-c(151.209900,145.754120,115.857048,142.136490,149.12858)
+game <- c("No, but you are close","Cairns is not the capital","You are too far","Mildura is not the capital","Canberra, yes! You find it!")    
+df <- data.frame(lat,lng)
+```
+```{r play}
+df %>% leaflet() %>% addTiles() %>% addMarkers(popup = game)
+```
+
+
